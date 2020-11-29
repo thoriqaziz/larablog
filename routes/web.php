@@ -17,6 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/categories', [
+    'uses' => 'CategoryController@index',
+    'as' => 'categories'
+]);
+
+Route::get('/posts', [
+    'uses' => 'PostController@index',
+    'as' => 'posts'
+]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
