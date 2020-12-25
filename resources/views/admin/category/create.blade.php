@@ -16,7 +16,12 @@
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" name="name" class="form-control" placeholder="category name">
+                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="category name">
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
             </div>
             <div class="form-group">
                 <div class="text-center">

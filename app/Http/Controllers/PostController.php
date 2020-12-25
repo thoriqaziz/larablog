@@ -22,11 +22,27 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'category_id' => 'required',
+            'content' => 'required',
+        ]);
+
         $post = new Post();
         $post->title = $request->title;
         $post->category_id = $request->category_id;
         $post->content = $request->content;
-        $post->featured = "";
+        
+        $image_path = "";
+        if($request->hasFile('featured')){
+            $image = $request->featured;
+            $image_name = time().$image->getClientOriginalName();
+            $image->move('uploads/post/', $image_name);
+
+            $image_path = 'uploads/post/'.$image_name;
+        }
+
+        $post->featured = $image_path;
         $post->save();
 
         return redirect()->route('posts');
