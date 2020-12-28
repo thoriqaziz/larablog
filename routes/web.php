@@ -66,6 +66,21 @@ Route::post('/post/store', [
     'as' => 'post.store'
 ]);
 
+Route::get('/post/edit/{id}', [
+    'uses' => 'PostController@edit',
+    'as' => 'post.edit'
+]);
+
+Route::post('/post/update/{id}', [
+    'uses' => 'PostController@update',
+    'as' => 'post.update'
+]);
+
+Route::get('/post/delete/{id}', [
+    'uses' => 'PostController@delete',
+    'as' => 'post.delete'
+]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
