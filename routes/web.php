@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+
 Route::get('/categories', [
     'uses' => 'CategoryController@index',
     'as' => 'categories'
@@ -80,6 +82,8 @@ Route::get('/post/delete/{id}', [
     'uses' => 'PostController@delete',
     'as' => 'post.delete'
 ]);
+
+});
 
 Auth::routes();
 
