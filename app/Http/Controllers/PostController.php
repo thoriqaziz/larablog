@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -30,6 +31,7 @@ class PostController extends Controller
 
         $post = new Post();
         $post->title = $request->title;
+        $post->slug = Str::slug($request->title);
         $post->category_id = $request->category_id;
         $post->content = $request->content;
         
@@ -91,9 +93,9 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        if(file_exists($post->featured)){
-            unlink($post->featured);
-        }
+        // if(file_exists($post->featured)){
+        //     unlink($post->featured);
+        // }
         
         $post->delete();
 
