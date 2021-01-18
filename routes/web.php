@@ -78,6 +78,21 @@ Route::post('/post/update/{id}', [
     'as' => 'post.update'
 ]);
 
+Route::get('/post/trash/{id}', [
+    'uses' => 'PostController@trash',
+    'as' => 'post.trash'
+]);
+
+Route::get('/post/trashed', [
+    'uses' => 'PostController@trashed',
+    'as' => 'post.trashed'
+]);
+
+Route::get('/post/restore/{id}', [
+    'uses' => 'PostController@restore',
+    'as' => 'post.restore'
+]);
+
 Route::get('/post/delete/{id}', [
     'uses' => 'PostController@delete',
     'as' => 'post.delete'

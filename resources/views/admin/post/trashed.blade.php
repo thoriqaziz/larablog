@@ -3,13 +3,13 @@
 @section('content')
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Post</h1>
+<h1 class="h3 mb-2 text-gray-800">Trashed Post</h1>
 <p class="mb-4">This is post page for administrator.</p>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">List Posts</h6>
+        <h6 class="m-0 font-weight-bold text-primary">List Trashed Posts</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -19,7 +19,7 @@
                         <th>Gambar</th>
                         <th>Title</th>
                         <th>Category</th>
-                        <th>Trash</th>
+                        <th>Restoring</th>
                         <th>Deleting</th>
                     </tr>
                 </thead>
@@ -31,8 +31,8 @@
                         </td>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->category->name }}</td>
-                        <td><a href="{{ route('post.edit', ['id' => $post->id]) }}" class="btn btn-sm btn-info">Edit</a></td>
-                        <td><a href="{{ route('post.trash', ['id' => $post->id]) }}" class="btn btn-sm btn-danger">Trash</a></td>
+                        <td><a href="{{ route('post.restore', ['id' => $post->id]) }}" class="btn btn-sm btn-info">Restore</a></td>
+                        <td><a href="{{ route('post.delete', ['id' => $post->id]) }}" class="btn btn-sm btn-danger">Delete</a></td>
                     </tr>
                     @endforeach
                 </tbody>

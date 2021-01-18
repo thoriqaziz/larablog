@@ -50,6 +50,7 @@
             <h6 class="collapse-header">Post:</h6>
             <a class="collapse-item" href="{{ route('posts') }}">List Posts</a>
             <a class="collapse-item" href="{{ route('post.create') }}">Add Post</a>
+            <a class="collapse-item" href="{{ route('post.trashed') }}">Trashed Post</a>
         </div>
     </div>
 </li>

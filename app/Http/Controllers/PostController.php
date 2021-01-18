@@ -89,7 +89,7 @@ class PostController extends Controller
         return redirect()->route('posts');
     }
 
-    public function delete($id)
+    public function trash($id)
     {
         $post = Post::find($id);
 
@@ -100,5 +100,34 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('posts');
+    }
+
+    public function trashed()
+    {
+        $posts = Post::onlyTrashed()->get();
+
+        return view('admin.post.trashed', compact('posts'));
+    }
+
+    public function restore($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+
+        $post->restore();
+
+        return redirect()->back();
+    }
+
+    public function delete($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+
+        if(file_exists($post->featured)){
+            unlink($post->featured);
+        }
+
+        $post->forceDelete();
+
+        return redirect()->back();
     }
 }
