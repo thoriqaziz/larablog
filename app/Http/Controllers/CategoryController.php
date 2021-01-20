@@ -28,6 +28,8 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->save();
 
+        toastr()->success('Category has been created successfully!');
+
         return redirect()->route('categories');
     }
 
@@ -45,6 +47,8 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->save();
 
+        toastr()->success('Category has been updated successfully!');
+
         return redirect()->route('categories');
     }
 
@@ -52,6 +56,8 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category->delete();
+
+        toastr()->success('Category has been deleted successfully!');
 
         return redirect()->route('categories');
     }

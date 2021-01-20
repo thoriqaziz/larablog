@@ -47,6 +47,8 @@ class PostController extends Controller
         $post->featured = $image_path;
         $post->save();
 
+        toastr()->success('Post has been created successfully!');
+
         return redirect()->route('posts');
     }
 
@@ -85,6 +87,7 @@ class PostController extends Controller
         }
 
         $post->save();
+        toastr()->success('Post has been updated successfully!');
 
         return redirect()->route('posts');
     }
@@ -98,6 +101,7 @@ class PostController extends Controller
         // }
         
         $post->delete();
+        toastr()->success('Post has been trashed successfully!');
 
         return redirect()->route('posts');
     }
@@ -114,6 +118,7 @@ class PostController extends Controller
         $post = Post::withTrashed()->where('id', $id)->first();
 
         $post->restore();
+        toastr()->success('Post has been restored successfully!');
 
         return redirect()->back();
     }
@@ -127,6 +132,7 @@ class PostController extends Controller
         }
 
         $post->forceDelete();
+        toastr()->success('Post has been deleted successfully!');
 
         return redirect()->back();
     }

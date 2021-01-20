@@ -21,6 +21,8 @@
     <!-- Custom styles for this page -->
     <link href="{{ asset('sb-admin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
+    @toastr_css
+
 </head>
 
 <body id="page-top">
@@ -296,5 +298,8 @@
     <script src="{{ asset('sb-admin/js/demo/datatables-demo.js') }}"></script>
 
 </body>
+@jquery
+@toastr_js
+@toastr_render
 
 </html>
