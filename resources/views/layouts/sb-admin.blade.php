@@ -298,8 +298,12 @@
     <script src="{{ asset('sb-admin/js/demo/datatables-demo.js') }}"></script>
 
 </body>
-@jquery
+
 @toastr_js
 @toastr_render
+<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'editor' );
+</script>
 
 </html>
