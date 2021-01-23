@@ -50,6 +50,37 @@ Route::get('/category/delete/{id}', [
 ]);
 
 
+Route::get('/tags', [
+    'uses' => 'TagController@index',
+    'as' => 'tags'
+]);
+
+Route::get('/tag/create', [
+    'uses' => 'TagController@create',
+    'as' => 'tag.create'
+]);
+
+Route::post('/tag/store', [
+    'uses' => 'TagController@store',
+    'as' => 'tag.store'
+]);
+
+Route::get('/tag/edit/{id}', [
+    'uses' => 'TagController@edit',
+    'as' => 'tag.edit'
+]);
+
+Route::post('/tag/update/{id}', [
+    'uses' => 'TagController@update',
+    'as' => 'tag.update'
+]);
+
+Route::get('/tag/delete/{id}', [
+    'uses' => 'TagController@delete',
+    'as' => 'tag.delete'
+]);
+
+
 
 
 
