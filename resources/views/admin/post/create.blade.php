@@ -38,6 +38,14 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label for="tag">Tags</label>
+                @foreach($tags as $tag)
+                <div class="checkbox">
+                    <label for="tag"><input type="checkbox" name="tags[]" value="{{ $tag->id }}"> {{ $tag->tag }}</label>
+                </div>
+                @endforeach
+            </div>
+            <div class="form-group">
                 <label for="content">Content</label>
                 <textarea id="editor" name="content" class="form-control @error('content') is-invalid @enderror">{{ old('content') }}</textarea>
                 @error('content')
@@ -48,7 +56,7 @@
             </div>
             <div class="form-group">
                 <label for="featured">Image</label>
-                <input type="file" name="featured" class="form-control" >
+                <input type="file" name="featured" class="form-control">
             </div>
             <div class="form-group">
                 <div class="text-center">

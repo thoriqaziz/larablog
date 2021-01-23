@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -18,7 +19,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.post.create', compact('categories'));
+        $tags = Tag::all();
+        return view('admin.post.create', compact('categories', 'tags'));
     }
 
     public function store(Request $request)
@@ -47,6 +49,8 @@ class PostController extends Controller
         $post->featured = $image_path;
         $post->save();
 
+        $post->tags()->attach($request->tags);
+
         toastr()->success('Post has been created successfully!');
 
         return redirect()->route('posts');
@@ -56,8 +60,9 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $categories = Category::all();
+        $tags = Tag::all();
 
-        return view('admin.post.edit', compact('post', 'categories'));
+        return view('admin.post.edit', compact('post', 'categories', 'tags'));
     }
 
     public function update(Request $request, $id)
@@ -87,6 +92,9 @@ class PostController extends Controller
         }
 
         $post->save();
+
+        $post->tags()->sync($request->tags);
+        
         toastr()->success('Post has been updated successfully!');
 
         return redirect()->route('posts');
