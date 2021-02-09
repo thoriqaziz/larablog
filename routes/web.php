@@ -129,6 +129,23 @@ Route::get('/post/delete/{id}', [
     'as' => 'post.delete'
 ]);
 
+
+
+Route::get('/users', [
+    'uses' => 'UserController@index',
+    'as' => 'users'
+]);
+
+Route::get('/user/create', [
+    'uses' => 'UserController@create',
+    'as' => 'user.create'
+]);
+
+Route::post('/user/store', [
+    'uses' => 'UserController@store',
+    'as' => 'user.store'
+]);
+
 });
 
 Auth::routes();
