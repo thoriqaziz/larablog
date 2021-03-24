@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontendController@index');
 
+Route::get('/{slug}', [
+    'uses' => 'FrontendController@singlePost',
+    'as' => 'post.single'
+]);
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
 Route::get('/categories', [

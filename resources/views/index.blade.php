@@ -22,10 +22,10 @@
             <div class="media">
                 <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{{ asset($post->featured) }}" alt="{{ $post->title }}">
                 <div class="media-body">
-                    <h3 class="title mb-1"><a href="blog-post.html">{{ $post->title }}</a></h3>
+                    <h3 class="title mb-1"><a href="{{ route('post.single', ['slug' => $post->slug] ) }}">{{ $post->title }}</a></h3>
                     <div class="meta mb-1"><span class="date">Published {{ $post->created_at->diffForHumans() }}</span><span class="category"><a href="#">{{ $post->category->name }}</a></span></div>
                     <div class="intro">{!! substr($post->content, 0, 200) !!}</div>
-                    <a class="more-link" href="blog-post.html">Read more &rarr;</a>
+                    <a class="more-link" href="{{ route('post.single', ['slug' => $post->slug] ) }}">Read more &rarr;</a>
                 </div>
                 <!--//media-body-->
             </div>
