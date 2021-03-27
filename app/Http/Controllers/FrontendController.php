@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,13 @@ class FrontendController extends Controller
     {
         $posts = Post::orderBy('created_at', 'desc')->paginate(6);
         return view('index', compact('posts'));
+    }
+
+    public function category($id)
+    {
+        $category = Category::find($id);
+        $posts = Post::where('category_id', '=', $id)->paginate(6);
+        return view('category', compact('category', 'posts'));
     }
 
     public function singlePost($slug)

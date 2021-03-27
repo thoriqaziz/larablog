@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontendController@index');
 
+Route::get('/category/{id}', [
+    'uses' => 'FrontendController@category',
+    'as' => 'category.post'
+]);
+
+
 Route::get('/{slug}', [
     'uses' => 'FrontendController@singlePost',
     'as' => 'post.single'

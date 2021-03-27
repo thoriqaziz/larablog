@@ -3,8 +3,8 @@
 @section('content')
 <section class="cta-section theme-bg-light py-5">
     <div class="container text-center">
-        <h2 class="heading">DevBlog - A Blog Template Made For Developers</h2>
-        <div class="intro">Welcome to my blog. Subscribe and get my latest blog post in your inbox.</div>
+        <h2 class="heading">Kategory {{ $category->name }}</h2>
+        <!-- <div class="intro">Welcome to my blog. Subscribe and get my latest blog post in your inbox.</div> -->
         <form class="signup-form form-inline justify-content-center pt-3">
             <div class="form-group">
                 <label class="sr-only" for="semail">Your email</label>
@@ -23,7 +23,7 @@
                 <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{{ asset($post->featured) }}" alt="{{ $post->title }}">
                 <div class="media-body">
                     <h3 class="title mb-1"><a href="{{ route('post.single', ['slug' => $post->slug] ) }}">{{ $post->title }}</a></h3>
-                    <div class="meta mb-1"><span class="date">Published {{ $post->created_at->diffForHumans() }}</span><span class="category"><a href="{{ route('category.post', ['id' => $post->category_id ]) }}">{{ $post->category->name }}</a></span></div>
+                    <div class="meta mb-1"><span class="date">Published {{ $post->created_at->diffForHumans() }}</span><span class="category"><a href="#">{{ $post->category->name }}</a></span></div>
                     <div class="intro">{!! substr($post->content, 0, 200) !!}</div>
                     <a class="more-link" href="{{ route('post.single', ['slug' => $post->slug] ) }}">Read more &rarr;</a>
                 </div>
