@@ -1,5 +1,6 @@
 <?php
 
+use App\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,13 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'FrontendController@index');
+Route::get('/', 'FrontendController@index')->name('index');
 
 Route::get('/category/{id}', [
     'uses' => 'FrontendController@category',
     'as' => 'category.post'
 ]);
 
+Route::get('/search', function () {
+    $posts = Post::where('title', 'like', '%' . request('query') . '%')->get();
+
+    return view('result')->with('posts', $posts)->with('query', request('query'));
+});
 
 Route::get('/{slug}', [
     'uses' => 'FrontendController@singlePost',

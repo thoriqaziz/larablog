@@ -5,12 +5,11 @@
     <div class="container text-center">
         <h2 class="heading">DevBlog - A Blog Template Made For Developers</h2>
         <div class="intro">Welcome to my blog. Subscribe and get my latest blog post in your inbox.</div>
-        <form class="signup-form form-inline justify-content-center pt-3">
+        <form class="signup-form form-inline justify-content-center pt-3" method="GET" action="/search">
             <div class="form-group">
-                <label class="sr-only" for="semail">Your email</label>
-                <input type="email" id="semail" name="semail1" class="form-control mr-md-1 semail" placeholder="Enter email">
+                <input type="text" id="query" name="query" class="form-control mr-md-1 query" placeholder="Type keyword search">
             </div>
-            <button type="submit" class="btn btn-primary">Subscribe</button>
+            <button type="submit" class="btn btn-primary">Search</button>
         </form>
     </div>
     <!--//container-->
